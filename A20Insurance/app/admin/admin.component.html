@@ -1,0 +1,103 @@
+﻿
+<form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <br />
+        <br />
+
+
+
+        <h2 align="center" style="color:goldenrod" class="display-2">Administrator Sign In</h2>
+
+        <br />
+
+        <div class="row" form-control>
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="adminID" class="control-label">Admin Identification</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">$</span>
+
+                        <input class="form-control" [(ngModel)]="admin.AdminId" placeholder="Admin Identificaiton"
+                               style="color:goldenrod" id="adminID" name="adminID" required />
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="pass" class="control-label">Password:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <input class="form-control" [(ngModel)]="admin.Password" placeholder="Password"
+                               style="color:goldenrod;"
+                               type="password" id="pass" name="adminPass" required />
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="pass" class="control-label">Action:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <select class="form-control" [(ngModel)]="Action" placeholder="Action"
+                               style="color:dodgerblue;"
+                               id="action" name="adminAction">
+
+                            <option selected value="Customer List">Customer List</option>
+                            <option value="Reset Password">Reset Password</option>
+                            <option value="Add Policy">Add Policy</option>
+                            <option value="Update Policy">Update Policy</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            style="color:darkgoldenrod;Background:lightgray"
+                            class="btn btn-success"> 
+                        Sign-In
+                    </button>
+
+                    <br /><div style="color:orange">
+                        <br />
+
+                        {{Status}}
+
+                    </div>
+
+                    <br /><div style="color:red">
+                        <br />
+
+                        {{Message}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </form>

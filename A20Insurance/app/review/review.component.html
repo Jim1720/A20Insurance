@@ -1,0 +1,347 @@
+﻿
+<form (ngSubmit)="onSubmit()" #reviewForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+
+        <h2 align="center" style="color:white;background-color:blue" class="display-2">Customer Update</h2>
+
+        <br />
+
+        <div class="row" form-control>
+
+
+            <div class="row" form-control>
+                <div class="col-md10" >
+
+                    <div style="color:blue">Customer Information: {{Customer.CustomerID}}</div>
+
+                </div>
+
+            </div>
+            <br />
+
+
+
+            <div class="row" form-control>
+
+                <div class="col-md-4">
+
+
+
+                    <div class="form-group">
+
+                        <label class="control-label">First Name:</label><br />
+
+                        <input [(ngModel)]="Customer.FirstName" placeholder="First Name"
+                               style="color:goldenrod" class="form-control" name="first" 
+                               id="first" pattern="^[.a-zA-Z0-9\s]*$" #first="ngModel"/>
+
+                        <br />
+
+                        <label class="control-label">Last Name: </label><br />
+
+                        <input [(ngModel)]="Customer.LastName" placeholder="Last Name"
+                               class="form-control" name="last" style="color:goldenrod" 
+                               pattern="^[.a-zA-Z\s]*$" #last="ngModel" id="last"/>
+
+                        <br />
+
+                        <label class="control-label">New Password: </label><br />
+
+                        <input [(ngModel)]="New.Password" placeholder="New password"
+                               class="form-control" name="pass" style="color:goldenrod"
+                               pattern="^[a-zA-Z0-9]*$" #pass="ngModel" id="pass" />
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-4">
+
+
+                    <div class="form-group">
+
+
+
+                        <label class="control-label">Email: </label><br />
+
+                        <input [(ngModel)]="Customer.Email" placeholder="Email"
+                               required class="form-control" name="email" id="email"
+                               pattern="^[0-9a-zA-Z]+@[0-9a-zA-Z]+.{1}[0-9a-zA-Z]+$"
+                               #email="ngModel" />
+
+
+
+                        <br />
+
+                        <label class="control-label">Phone: </label><br />
+
+
+                        <input [(ngModel)]="Customer.Phone" placeholder="Phone"
+                               required class="form-control" name="phone" id="phone"
+                               pattern="^[0-9]{10}|\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$"
+                               #phone="ngModel" />
+
+
+                        <br />
+                        <br />
+                        <button type="button"
+                                class="btn b1"
+                                (click)="onSubmit()"
+                                [disabled]="!reviewForm.form.valid">
+                            Update
+                        </button>
+
+                        <button type="button"
+                                class="btn b1"
+                                href="#" (click)="onSignOut()">
+                            Sign Out
+                        </button>
+
+
+
+                    </div>
+
+                    <br />
+
+                    <div class="form-group msg">
+
+                        {{Message}}
+
+                        <div *ngIf="first.invalid && first.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="first.errors.pattern">
+                                First Name is not valid. Only letters, numbers are allowed.
+                            </div>
+
+                            <div *ngIf="first.errors.required">
+                                First Name is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="last.invalid && last.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="last.errors.pattern">
+                                Last Name is not valid. Only letters are allowed.
+                            </div>
+
+                            <div *ngIf="last.errors.required">
+                                Last Name is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="adr1.invalid && adr1.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="adr1.errors.pattern">
+                                Address 1 is not valid. Only letters, numbers, period or spaces are allowed.
+                            </div>
+
+                            <div *ngIf="adr1.errors.required">
+                                Address 1  is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="adr2.invalid && adr2.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="adr2.errors.pattern">
+                                Address 2 is not valid. Only letters, numbers, period,# or spaces are allowed.
+                            </div>
+
+
+                        </div>
+
+                        <div *ngIf="city.invalid && city.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="city.errors.pattern">
+                                City not valid. Only letters are allowed.
+                            </div>
+
+                            <div *ngIf="city.errors.required">
+                                City is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="state.invalid && state.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="state.errors.pattern">
+                                State not valid. Only letters are allowed.
+                            </div>
+
+                            <div *ngIf="state.errors.required">
+                                State is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="zip.invalid && zip.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="zip.errors.pattern">
+                                Zip not valid. Only numbers are allowed.
+                            </div>
+
+                            <div *ngIf="zip.errors.required">
+                                Zip is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="pass.invalid && pass.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="pass.errors.pattern">
+                                New Password not valid. Only letters and numbers are allowed.
+                            </div>
+                             
+
+                        </div>
+
+                        <div *ngIf="email.invalid && email.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="email.errors.pattern">
+                                Email not valid. Only numbers are allowed.
+                            </div>
+
+                            <div *ngIf="email.errors.required">
+                                Email is required.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="phone.invalid && phone.touched"
+                             class="alert alert-danger">
+
+                            <div *ngIf="phone.errors.pattern">
+                                Phone not valid. Ten Digits or (111)222-3333 style allowed.
+                            </div>
+
+                            <div *ngIf="phone.errors.required">
+                                Pbone is required.
+                            </div>
+
+                        </div>
+                       
+
+                        
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <label>Address Information:</label>
+
+                    <div class="form-group">
+
+                        <input [(ngModel)]="Customer.Address1" placeholder="Address Line 1"
+                               class="form-control" name="adr1"  id="adr1"
+                                pattern="^[a-zA-Z0-9#.\s]*$" #adr1="ngModel"/>
+
+                        <br />
+                        <input [(ngModel)]="Customer.Address2" placeholder="Address Line 2"
+                               class="form-control" name="adr2"  id="adr2"
+                               pattern="^\\s|[a-zA-Z0-9#.\s]*$" #adr2="ngModel"/>
+
+                        <div>
+
+
+
+                            <br />
+
+                            <input [(ngModel)]="Customer.City" placeholder="City"
+                                   class="form-control" name="city"  id="city"
+                                   pattern="^[a-zA-Z\s]*$" #city="ngModel"/><br />
+
+
+
+                            <input [(ngModel)]="Customer.State" placeholder="State"
+                                   class="form-control" name="state" id="state" 
+                                   pattern="^[a-zA-Z]*$" #state="ngModel"/><br />
+
+
+
+                            <input [(ngModel)]="Customer.Zip" placeholder="Zip"
+                                   class="form-control" name="zip" id="zip" 
+                                   pattern="^[0-9]*$" #zip="ngModel"/>
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+               
+
+            </div> 
+
+
+            <h2 align="center" style="color:white;background-color:black" class="display-2">Claim and Policy Information</h2>
+
+
+            <br />
+            <div class="row" form-control>
+
+                <div class="col-md-4">
+                 
+                    <button type="button" 
+                       class="btn b1" 
+                       href="#" (click)="onFile()">
+                        File Claim
+                    </button>
+
+                    <button type="button" 
+                       class="btn b1" 
+                       href="#" (click)="onHistory()">
+                        {{ShowHistory}}
+                    </button>
+
+                </div>
+
+                <div class="col-md-4">
+
+                </div>
+
+                <div class="col-md-4" style="color:blue">
+                    <b>
+                       Current Policy: {{Customer.PolicyName}}
+                    </b>
+                    <a type="button" 
+                       class="btn"
+                       [style.background-color]="policyButtonColor"
+                       href="#" routerLink="policy" routerLinkActive="active">
+                       {{whatPolicy}}
+                    </a> 
+                </div>
+
+
+           </div>
+            </div>
+        </div>
+
+</form>

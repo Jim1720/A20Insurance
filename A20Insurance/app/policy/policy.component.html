@@ -1,0 +1,49 @@
+﻿
+<form (ngSubmit)="onSubmit()" #policyForm="ngForm">
+
+
+    <br />
+    <br /> 
+    <br />
+
+    <br />
+    <br /> 
+    <h2>Policy Assignment </h2>
+    <br />
+    <h4 style="color:dodgerblue">Please select a policy by clicking on the desired policy name</h4>
+    <br />
+
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Select Name</th>
+                <th>Deductible</th>
+                <th>Copay</th>
+                <th>Type</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let p of Policies">  
+
+                <tr>
+                    <td><a (click)="assignPolicy($event);">{{p.Name}}</a></td>  
+                    <td>{{p.Deductible}}</td>
+                    <td>{{p.Copay}}</td>
+                    <td>{{p.Type}}</td>
+                    <td>{{p.Rate}}</td>
+                </tr> 
+
+        </tbody>
+    </table> 
+
+    <hr />
+
+    <button type="button" 
+        (click)="onReview()"
+        class="btn b1">
+        Return to Review
+    </button>
+
+    {{Message}}
+ 
+</form>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+ 
+  
+ 
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container"> 
+
+        <div class="navbar-header"> 
+             
+                <div class="collapse" id="navbarToggleExternalContent" style="color:white"
+                     *ngIf="isExpanded">
+
+                    <h4 class="display-4"><b>Register</b></h4>
+                    <p>
+                        New Customers must first register<br />
+                        to use this site
+                    </p><b> <a (click)="onRoute($event)">Register</a></b>
+                    <br />
+
+                    <h4 class="display-4"><b>Existing Customers</b></h4>
+                    <p>
+                        Returning Customers must sign-in<br />
+                        to use this site
+                    </p><b> <a (click)="onRoute($event)">Sign-In</a></b>
+                    <br />
+
+                    <h4 class="display-4"><b>Splash</b></h4>
+                    <p>
+                        Existing Customers must sign in<br />
+                        to use this site
+                    </p><b> <a (click)="onRoute($event)">Splash</a></b>
+                    <br />
+
+                    <h4 class="display-4"><b>Classic</b></h4>
+                    <p>
+                        Existing Customers must sign in<br />
+                        to use this site
+                    </p><b> <a (click)="onRoute($event)">Classic</a></b>
+                    <br />
+
+                    <h4 class="display-4"><b>Admin</b></h4>
+                    <p>
+                        Administrator Menu<br />
+                        for this site
+                    </p><b> <a (click)="onRoute($event)">Admin</a></b>
+                    <br />
+
+                    <h4 class="display-4"><b>Admin</b></h4>
+                    <p>
+                        About this site<br />
+                        information
+                    </p><b> <a (click)="onRoute($event)">About</a></b>
+                    <br />
+
+                </div>
+            <div>
+               
+            <nav class="navbar navbar-dark bg-dark">
+                <br />
+                <label class="navbar-toggler button-default-outline" type="button" data-toggle="collapse"
+                        data-target="#navbarToggleExternalContent"
+                        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"
+                        (click)="isExpanded = !isExpanded" [attr.aria-expanded]="!isExpanded">
+                    <button style="color:white; Background:black;">Start</button>
+                </label>
+
+                <my-nav>Loading nav menu</my-nav> 
+
+                <label style="font-size: x-large; font-family:Arial; color:gold; font-style:italic">
+                    Your Day with new insurance !!
+                </label> 
+
+              
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
+</div> 
+
+<div class="container row-md-12 form-control">
+
+    <router-outlet></router-outlet>
+
+
+</div>
+

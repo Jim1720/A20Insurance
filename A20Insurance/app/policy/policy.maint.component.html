@@ -1,0 +1,150 @@
+﻿
+<form (ngSubmit)="onSubmit()" #policyForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <br />
+        <br />
+
+
+
+        <h2 align="center" style="color:blue" class="display-2">{{Action}}</h2>
+
+        <br />
+
+        <div class="row" form-control>
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                
+
+                    <div *ngIf="this.Update" class="input-group">  
+                         
+
+                            <label for="selectname" class="control-label">Select Policy Name to Update:</label> 
+
+                            <div class="input-group">
+
+                                <span class="input-group-addon" id="basic-addon1">$</span>
+
+                                <select class="form-control"
+                                        style="color:blue;"
+                                        (ngModelChange)="onPolicyNameChange($event)"
+                                        name="selectname" id="selectname" [(ngModel)]="SelectedName">
+
+                                    <option *ngFor="let policy of policyList">{{policy.Name}}</option>
+                                </select>
+                            </div> 
+                </div>
+
+
+                <div *ngIf="this.Add" class="input-group">
+
+                    <label for="newPolicyName" class="control-label">New Policy Name:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">$</span>
+
+                        <input class="form-control" [(ngModel)]="NewName" placeholder="New Policy Name"
+                               style="color:blue;"
+                               id="newPolicyName" name="newPolicyName" required />
+                          
+
+                    </div> 
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="ded" class="control-label">Deductible:</label>
+
+                    <div class="input-group"> 
+
+                        <input class="form-control" [(ngModel)]="policy.Deductible" placeholder="Deductible" 
+                               id="ded" name="ded" required/> 
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="ded" class="control-label">Copay:</label>
+
+                    <div class="input-group">
+
+                        <input class="form-control" [(ngModel)]="policy.Copay" placeholder="Copay" 
+                               id="cop" name="cop" required />  
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="rate" class="control-label">Rate:</label>
+
+                    <div class="input-group">
+
+                        <input class="form-control" [(ngModel)]="policy.Rate" placeholder="Rate" 
+                               id="rate" name="rate" required />  
+
+                    </div>
+
+                </div> 
+              
+
+                <br />  
+                <label for="type" class="control-label">Type:{{policy.Type}}</label>
+                <div>
+                    <div>
+                        <select class="form-control" name="type" id="type"
+                             [(ngModel)]="policy.Type" Placeholder="Select new Policy type here"
+                             (onModelChange)="policy.Type=$event">
+
+                            <option value="Medical">Medical</option>
+                            <option value="Dental">Dental</option>
+                             
+
+                        </select>
+                    </div>
+                </div>
+               
+
+                <br /> 
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            style="color:darkgoldenrod;Background:lightgray"
+                            class="btn btn-success"
+                            [disabled]="!policyForm.form.valid">
+                        {{Action}}
+                    </button> 
+
+                    <a type="button"
+                       style="color:darkgoldenrod;Background:lightgray"
+                       class="btn btn-success"
+                       href="#" routerLink="/admin" routerLinkActive="active">
+                        Return to Admin
+                    </a>
+
+                    <br />
+ 
+                    <div style="color:red">
+                        {{Message}} 
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+     </div>
+
+    </div>
+</form>

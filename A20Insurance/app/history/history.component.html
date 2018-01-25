@@ -1,0 +1,92 @@
+﻿<form #historyForm="ngForm">
+
+    <div class="container"> 
+    
+    <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+    <h2 align="center" style="color:white">Claim History</h2>
+
+    <br />
+    <h3 align="center" style="color:gold" class="display-2">Subscriber: {{Customer.FirstName}}  {{Customer.LastName}}</h3>
+         
+         
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Patient</th>
+                <th>Service Date</th>
+                <th>Clinic</th>
+                <th>Doctor</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let claim of listOfClaims">   
+            <tr>
+            <tr>
+                <td style="color:blue">{{claim.First}}&nbsp;&nbsp;
+                    {{claim.Last}}</td> 
+                <td style="color:blue">{{claim.DateService}}</td>
+                <td>{{claim.Clinic}}</td>
+                <td>{{claim.Physician}}</td>
+                <td>{{claim.Location}}</td>
+            </tr>
+                <tr>
+                    <td>Diagnosis:</td>
+                    <td>{{claim.Diag1}}</td>
+                    <td>{{claim.Diag2}}</td>
+                </tr>
+                <tr>
+                    <td>Procedure:</td>
+                    <td>{{claim.Proc1}}</td>
+                    <td>{{claim.Proc2}}</td>
+                    <td>{{claim.Proc3}}</td>
+                </tr>
+
+                <tr>
+                    <td>Service:</td>
+                    <td>{{claim.Service}}</td> 
+                </tr>
+                
+                <tr>
+                    <td>Note:</td>
+                    <td>{{claim.Note}} 
+                </tr>
+               
+                <tr>
+                    <td>Referral:</td>
+                    <td>{{claim.ReferPhysicianClinic}}</td>
+                </tr>
+               
+                <tr>
+                    <td>Payment Method:</td>
+                    <td>{{claim.PayMethod}}</td>
+                </tr>
+              
+                <tr>
+                    <td>Status:</td>
+                    <td style="color:green">
+                        {{Status}}
+                    </td>
+                </tr> 
+
+            
+             
+
+        </tbody>
+        </table>
+
+        <button class="btn b1"
+                (click)="onReview()">
+                Return to Review
+        </button>
+
+        {{Message}}
+
+        </div>
+        
+</form>

@@ -1,0 +1,76 @@
+﻿
+<form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <br />
+        <br />
+
+
+
+        <h2 align="center" style="color:blue" class="display-2">Customer Sign In</h2>
+
+        <br />
+
+        <div class="row" form-control>
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="custID" class="control-label">Customer Identification</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">$</span>
+
+                        <input class="form-control" [(ngModel)]="CustomerID" placeholder="Customer Identificaiton"
+                               style="color:goldenrod" id="custID" name="custID" required />
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="pass" class="control-label">Password:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <input class="form-control" [(ngModel)]="Password" placeholder="Password"
+                               style="color:goldenrod;"
+                               type="password" id="pass" name="custPass" required />
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            style="color:white;Background:blue"
+                            class="btn btn-success"
+                            [disabled]="!signInForm.form.valid">
+                        Sign-In
+                    </button>
+
+
+                    <br /><div class="msg">
+                        <br />
+
+                        {{Message}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </form>

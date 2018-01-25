@@ -1,0 +1,116 @@
+﻿ 
+<form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <br />
+        <br />
+
+
+
+        <h2 align="center" style="color:goldenrod" class="display-2">Customer Password Reset</h2>
+
+        <br />
+
+        <div class="row" form-control>
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="custID" class="control-label">Customer ID</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">$</span>
+
+                        <input (keyup)="onCustEntered()"
+                               class="form-control" [(ngModel)]="CustomerID" placeholder="Customer Identificaiton"
+                               style="color:dodgerblue" id="custID" name="cusID" required />
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="pass" class="control-label">New Password for Customer:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <input class="form-control" [(ngModel)]="NewPass" placeholder="New Password"
+                               style="color:darkblue;"
+                               pattern="^[.a-zA-Z0-9]*$" #newp="ngModel"
+                              id="newp" name="newp" required />
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="pass" class="control-label">Admin Auth Code:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <input class="form-control" [(ngModel)]="Password" placeholder="Password"
+                               style="color:dodgerblue;"
+                               type="password" id="pass" name="pass" required />
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            style="color:darkgoldenrod;Background:lightgray"
+                            class="btn btn-success"
+                            [disabled]="!signInForm.form.valid">
+                        Reset Customer Password
+                    </button>
+
+                    <a type="button"
+                       style="color:darkgoldenrod;Background:lightgray"
+                       class="btn btn-success"
+                       href="#" routerLink="/admin" routerLinkActive="active">
+                        Return to Admin
+                    </a>
+
+
+                    <br /><div style="color:lawngreen">
+                    <br />
+
+                    {{Message}}
+
+
+                    <div *ngIf="newp.invalid && newp.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="newp.errors.pattern">
+                            Reset Password is not valid. Only letters, numbers are allowed.
+                        </div>
+
+                        <div *ngIf="newp.errors.required">
+                            Please type new password for reset.
+                        </div>
+
+                    </div>
+
+</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+

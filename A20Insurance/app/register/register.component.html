@@ -1,0 +1,371 @@
+﻿
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+
+    <div class="container" >
+
+        <br />
+        <br />
+        <br />
+
+
+
+        <h2 align="center" style="color:goldenrod" class="display-2">Customer Registration</h2>
+
+        <br />
+
+        <div class="row" form-control>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="custID" class="control-label">Customer Identification</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">$</span>
+
+                        <input class="form-control" [(ngModel)]="Customer.CustomerID" placeholder="Customer Identificaiton"
+                               style="color:dodgerblue" id="custID" name="custID" required 
+                               pattern="^[a-zA-Z0-9]*$" #CustID="ngModel"/>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+
+                    <label for="pass" class="control-label">Password:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <input class="form-control" [(ngModel)]="Customer.Password" placeholder="Password"
+                               style="color:dodgerblue;"
+                               type="password" id="pass" name="pass" required 
+                               pattern="^[a-zA-Z0-9]*$" #pass="ngModel"/>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row" form-control>
+            <div class="col-md10">
+
+                <div style="color:goldenrod">Customer Information:</div>
+
+            </div>
+
+        </div>
+        <br />
+
+
+
+        <div class="row" form-control>
+
+            <div class="col-md-6">
+
+                 <div class="form-group">
+
+                    <label class="control-label">First Name:</label><br />
+
+                    <input pattern="^[.a-zA-Z0-9\s]*$" required [(ngModel)]="Customer.FirstName" placeholder="First Name"
+                           class="form-control" name="first" id="first" style="color:goldenrod"
+                           #first="ngModel"/>
+                           
+
+                    <br />
+
+                    <label class="control-label">Last Name: </label><br />
+
+                    <input [(ngModel)]="Customer.LastName" placeholder="Last Name"
+                           required class="form-control" name="last" id="last" style="color:goldenrod" 
+                           pattern="^[.a-zA-Z\s]*$" #last="ngModel"/>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="control-label">Email: </label> <br />
+
+                    <input [(ngModel)]="Customer.Email" placeholder="Email"
+                            email required class="form-control" name="email" id="email"
+                            pattern="^[0-9a-zA-Z]+@[0-9a-zA-Z]+.{1}[0-9a-zA-Z]+$"
+                            #email="ngModel"/>
+
+
+
+                    <br />
+
+                    <label class="control-label">Phone: </label><br />
+
+                    <input [(ngModel)]="Customer.Phone" placeholder="Phone"
+                           required class="form-control" name="phone"  id="phone"
+                           pattern="^[0-9]{10}|\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$"
+                           #phone="ngModel"
+                          /> 
+
+
+                </div>
+
+                <br />
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            style="color:darkgoldenrod;Background:lightgray"
+                            class="btn btn-success"
+                            [disabled]="!registerForm.form.valid">
+                        Register
+                    </button>
+                  
+                    <div class="msg">
+                    {{Message}}
+                   
+
+                    <div *ngIf="CustID.invalid && CustID.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="CustID.errors.pattern">
+                            Customer ID is not valid. Only letters, numbers are allowed.
+                        </div>
+
+                        <div *ngIf="CustID.errors.required">
+                            Customer ID is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="pass.invalid && pass.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="pass.errors.pattern">
+                            Password is not valid. Only letters, numbers are allowed.
+                        </div>
+
+                        <div *ngIf="pass.errors.required">
+                            Password is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="first.invalid && first.touched"
+                         class="alert alert-danger"> 
+                        
+                        <div *ngIf="first.errors.pattern">
+                            First Name is not valid. Only letters, numbers are allowed.
+                        </div>
+
+                        <div *ngIf="first.errors.required">
+                            First Name is required.
+                        </div> 
+
+                    </div>
+
+                    <div *ngIf="last.invalid && last.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="last.errors.pattern">
+                            Last Name is not valid. Only letters are allowed.
+                        </div>
+
+                        <div *ngIf="last.errors.required">
+                            Last Name is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="adr1.invalid && adr1.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="adr1.errors.pattern">
+                            Address 1 is not valid. Only letters, numbers, period or spaces are allowed.
+                        </div>
+
+                        <div *ngIf="adr1.errors.required">
+                            Address 1 is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="adr2.invalid && adr2.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="adr2.errors.pattern">
+                            Address 2 is not valid. Only letters, numbers, period,# or spaces are allowed.
+                        </div>
+ 
+
+                    </div>
+
+                    <div *ngIf="city.invalid && city.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="city.errors.pattern">
+                            City not valid. Only letters are allowed.
+                        </div>
+
+                        <div *ngIf="city.errors.required">
+                           City is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="state.invalid && state.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="state.errors.pattern">
+                            State not valid. Only letters are allowed.
+                        </div>
+
+                        <div *ngIf="state.errors.required">
+                            State is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="zip.invalid && zip.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="zip.errors.pattern">
+                            Zip not valid. Only numbers are allowed.
+                        </div>
+
+                        <div *ngIf="zip.errors.required">
+                            Zip is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="promo.invalid && promo.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="promo.errors.pattern">
+                            Promotion code not valid. Only letters and numbers are allowed.
+                        </div>
+
+                        <div *ngIf="promo.errors.required">
+                            Promotion Code is required.
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="phone.invalid && phone.touched"
+                         class="alert alert-danger">
+
+                        <div *ngIf="phone.errors.pattern">
+                            Phone not valid. Must be 10 digits or (111)222-3333 style.
+                        </div>
+
+                        <div *ngIf="phone.errors.required">
+                            Phone Number is required.
+                        </div>
+
+                    </div> 
+
+
+                    <div *ngIf="email.invalid && email.touched"
+                         class="alert alert-danger">
+
+
+                        <div *ngIf="email.errors.pattern">
+                           Invalid Email
+                        </div>
+
+                        <div *ngIf="email.errors.required">
+                            Email Required
+                        </div>
+
+                    </div> 
+
+                        </div>
+            </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+
+                <label class="control-label">Address Information:</label><br />
+
+                <div class="form-group">
+
+                    <input [(ngModel)]="Customer.Address1" placeholder="Address Line 1"
+                           class="form-control" required  name="adr1" id="adr1"
+                           pattern="^[a-zA-Z0-9#.\s]*$" #adr1="ngModel"/>
+
+                    <br />
+                    <input [(ngModel)]="Customer.Address2" placeholder="Address Line 2"
+                           class="form-control" name="adr2" id="adr2"
+                           pattern="^\\s|[a-zA-Z0-9#.\s]*$" #adr2="ngModel"/>
+
+                    <div>
+
+
+
+                        <br />
+
+                        <input [(ngModel)]="Customer.City" placeholder="City"
+                               required class="form-control" name="city" id="city"
+                               pattern="^[a-zA-Z\s]*$" #city="ngModel"/><br />
+
+
+
+                        <input [(ngModel)]="Customer.State" placeholder="State"
+                               required class="form-control" name="state" id="state"
+                               pattern="^[a-zA-Z]*$" #state="ngModel"/><br />
+
+
+
+                        <input [(ngModel)]="Customer.Zip" placeholder="zip" id="zip"
+                                required class="form-control" name="zip"
+                                pattern="^[0-9]*$" #zip="ngModel"/>
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label">Promotion Code:</label><br />
+
+                    <input [(ngModel)]="Customer.PromotionCode" placeholder="Promotion Code"
+                            required class="form-control" name="promo" id="promo"
+                            pattern="^[a-zA-Z0-9]*$" #promo="ngModel"/>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <div style="color:gray">
+            <ul>
+                <li>Please make a note of Customer ID and password for future reference.</li>
+                <li>Demonstration site: data is fictional and no real business is conducted here.</li>
+                <li>Please be sure to enter the promotion code supplied by site developer. Thank you.</li>
+            </ul>
+        </div>
+
+
+    </div>
+     
+        
+
+
+</form>

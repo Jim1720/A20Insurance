@@ -1,0 +1,312 @@
+﻿ 
+<form (ngSubmit)="onSubmit()" #claimForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <h2 align="center" style="color:white;background-color:blue">File Claim</h2> 
+        <br />
+        <h3 align="center" style="color:blue" class="display-2">File Claim for {{custFirst}} {{custLast}} </h3> 
+
+        <br /><div *ngIf="claimErrors" style="color:red">See Errors below at end of screen - claim not submitted.</div>  
+
+        <div class="row" form-control>
+            <div class="col-md10" style="background:black">
+                <div style="color:white;"><b>Patient:</b><br /></div>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" form-control>
+            <div class="col-md-4">
+
+                <div class="form-group">
+
+                    <label class="control-label">First Name:</label><br />
+
+                    <input [(ngModel)]="claim.First" placeholder="First Name"
+                           style="color:goldenrod" class="form-control" name="first"
+                           #first="ngModel" id="first"
+                           pattern="^[a-zA-Z00-9.\s]+$"/>
+
+                    <br />
+
+                    <label class="control-label">Last Name: </label><br />
+
+                    <input [(ngModel)]="claim.Last" placeholder="Last Name"
+                           class="form-control" name="last" style="color:goldenrod"
+                           #last="ngModel" id="last"
+                           pattern="^[a-zA-Z\s]+$"/>
+
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row" form-control>
+            <div class="col-md10" style="background:black">
+                <div style="color:white;"><b>Diagnosis and Procedures: </b></div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row" form-control>
+            <div class="col-md-4"><div class="form-group"> 
+
+                <br />
+                <label  style="color:dodgerblue" (ngModelChange)="claim.Diag1=$event" class="form-control">Diagnosis Codes:</label>
+                <div>
+                    <div>
+                        <select class="form-control" (ngModelChange)="claim.Diag1=$event" ngModel="[(claim.Diag1)]" name="da1" id="da1"> 
+                            <option value="1001">1001</option>
+                            <option value="1002">1002</option>
+                            <option value="1003">1003</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <select class="form-control"  (ngModelChange)="claim.Diag2=$event" ngModel="[(claim.Diag2)]" name="da2" id="da2"> 
+                        <option value="1001">1001</option>
+                        <option value="1002">1002</option>
+                        <option value="1003">1003</option>
+                    </select>
+                </div>
+
+            </div></div>
+
+            <div class="col-md-4"><div class="form-group"> 
+
+                <br />
+                <label style="color:dodgerblue" class="form-control">Procedure Codes:</label> 
+                <div>
+                    <select class="form-control" (ngModelChange)="claim.Proc1=$event" ngModel="[(claim.Proc1)]" name="pa1" id="pa1"> 
+                        <option value="9001">9001</option>
+                        <option value="9002">9002</option>
+                        <option value="9003">9003</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <select class="form-control" (ngModelChange)="claim.Proc2=$event" ngModel="[(claim.Proc2)]" name="pa2"id="pa2"> 
+                        <option value="9001">9001</option>
+                        <option value="9002">9002</option>
+                        <option value="9003">9003</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <select class="form-control" (ngModelChange)="claim.Proc3=$event" ngModel="[(claim.Proc3)]" name="pa3" id="pa3"> 
+                        <option value="9001">9001</option>
+                        <option value="9002">9002</option>
+                        <option value="9003">9003</option>
+                    </select>
+                </div>
+
+                <br />
+
+            </div></div>
+
+            <div class="col-md-4"><div class="form-group"> 
+
+                <br />
+                <label style="color:dodgerblue" class="form-control">Claim Note:</label> 
+
+                <div>
+                     
+                    <input class="form-control" [(ngModel)]="claim.Note" placeholder="Claim Notes" name="note"
+                           id="note" #note="ngModel"
+                           pattern="^[A-Za-z0-9.\s]*$"/>
+                </div> 
+
+            </div></div>
+        </div>  
+     
+
+    <div class="row" form-control>
+        <div class="col-md10" style="background:black">
+            <div style="color:white;"><b>Services Clinics and Physicians: </b></div>
+        </div>
+    </div>
+
+    <div class="row" form-control>  
+        <div class="col-md-4"><div class="form-group"> 
+              
+              
+
+            <div>
+                <label class="control-label">Physician: </label><br />
+                <select class="form-control" (ngModelChange)="claim.Physician=$event" ngModel="[(claim.Physician)]" name="physic"
+                        id="physic">
+                    <option value="Dr. Jones">Dr. Jones</option>
+                    <option value="Dr. Smith">Dr. Smith</option>
+                </select>
+            </div>
+             <br />
+
+            <div>
+                <label class="control-label">Clinic Name: </label><br />
+                <select class="form-control" (ngModelChange)="claim.Clinic=$event" ngModel="[(claim.Clinic)]" name="clinic"
+                        id="cliinic">
+                    <option value="Professional Care">Professional Care Clinic</option>
+                    <option value="Fast Care Clinic">Fast Care</option>
+                </select>
+            </div>
+            <br />
+
+            <div>
+                <label class="control-label">Referring Physician / Clinic:</label><br />
+                <input [(ngModel)]="claim.ReferPhysicianClinic" name="rpc" placeholder="Refer Physician"
+                       class="form-control" #rpc="ngModel" id="rpc"
+                       pattern="^[A-Za-z0-9.\s]*$"/>
+            </div>
+
+        </div></div>
+
+        <div class="col-md-4"> <div class="form-group">  
+
+                  <div>
+                    <label>Date of Service:</label><br />
+                    <input  class="form-control" [(ngModel)]="claim.DateService" placeholder="Service Date"
+                           name="servDate" id="servDate" #servDate="ngModel"
+                           pattern="^[0-9]{2}[0-9]{2}[0-9]{2}|[0-9]{2}\/[0-9]{2}\/[0-9]{2}$"/>
+                  </div> 
+            <br />
+
+                <div>
+                    <label>Services: </label><br />
+                    <select  class="form-control" (ngModelChange)="claim.Service=$event" 
+                             ngModel="[(claim.Service)]" name="serv" id="serv"> 
+                        <option *ngFor="let service of services">{{service.ServiceName}}</option>  
+                    </select>
+                </div>
+            <br />
+                <div>
+                    <label class="control-label">Service Preformed At: </label><br />
+                    <select  class="form-control" (ngModelChange)="claim.Location=$event" ngModel="[(claim.Location)]" name="location" id="location">
+                        <option value="Hospital">Hospital</option>
+                        <option value="OutPatient">Outpatient</option>
+                    </select>
+                </div>
+
+            </div></div>
+            
+         
+        <div class="col-md-4"><div class="form-group"> 
+
+           
+            <div>
+                <label class="control-label">Payment Method: </label><br />
+                <select class="form-control"  (ngModelChange)="claim.PayMethod=$event"
+                        id="copay" ngModel="[(claim.PayMethod)]" name="copay">
+                    <option value="Copay Used" selected>Copay Used</option>
+                    <option value="Out of Pocket">Out of Pocket</option>
+                </select>
+            </div>
+
+            <br />
+            </div></div>
+         
+
+     </div>
+         
+
+    <br />
+    <br />
+    <div class="row" form-control>
+        <div class="col-md10 control-label" style="background:black">
+            <div style="color:white;">Errors:</div>
+        </div>
+    </div>
+
+        <div class="row" form-control>
+
+            <br />
+
+            <div *ngIf="first.invalid && first.touched"
+                 class="alert alert-danger">
+
+                <div *ngIf="first.errors.pattern">
+                    First Name is not valid. Only letters, numbers are allowed.
+                </div>
+
+                <div *ngIf="first.errors.required">
+                    First Name is required.
+                </div>
+
+            </div>
+
+            <div *ngIf="last.invalid && last.touched"
+                 class="alert alert-danger">
+
+                <div *ngIf="last.errors.pattern">
+                    Last Name is not valid. Only letters are allowed.
+                </div>
+
+                <div *ngIf="last.errors.required">
+                    Last Name is required.
+                </div>
+
+            </div>
+
+            <div *ngIf="note.invalid && note.touched"
+                 class="alert alert-danger">
+
+                <div *ngIf="note.errors.pattern">
+                    Note is not valid. Only letters are allowed.
+                </div>
+
+            </div>
+
+            <div *ngIf="servDate.invalid && servDate.touched"
+                 class="alert alert-danger">
+
+                <div *ngIf="servDate.errors.pattern">
+                    Date of Service is not valid. Only letters are allowed.
+                </div>
+
+                <div *ngIf="servDate.errors.required">
+                    Date of Service is required.
+                </div>
+
+            </div>
+
+
+            <div *ngIf="rpc.invalid && rpc.touched"
+                 class="alert alert-danger">
+
+                <div *ngIf="rpc.errors.pattern">
+                    Refer Physican/Clinic Invalid.
+                </div>
+
+                <div *ngIf="rpc.errors.required">
+                    Refer Physican/Clinic Required.
+                </div>
+
+            </div>
+
+            <div style="color:red"> 
+                {{Message}}
+            </div>
+
+        </div>
+
+        <div class="row" form-control>
+
+            <br /><button type="submit" class="btn b1">Submit Claim</button> 
+
+            <button type="button" 
+               class="btn b1"
+               (click)="onReview()">
+                Return to Review
+            </button>
+
+        </div>
+     
+        </div>
+
+</form>

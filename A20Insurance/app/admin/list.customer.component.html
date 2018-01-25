@@ -1,0 +1,90 @@
+﻿
+<form (ngSubmit)="onSubmit()" #listCustForm="ngForm">
+
+    <div class="container">
+
+        <br />
+        <br />
+        <br />
+
+        <h2 align="center" style="color:blue" class="display-2">Customer List </h2>
+
+        <div class="row" form-control>
+             
+             
+                <div class="form-group">
+
+                    <label for="first" class="control-label">First Name</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">$</span>
+
+                        <input class="form-control" [(ngModel)]="FirstName" placeholder="First Name"
+                               style="color:goldenrod" id="first" name="first" />
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="last" class="control-label">Last Name:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1">?</span>
+
+                        <input class="form-control" [(ngModel)]="LastName" placeholder="LastName"
+                               style="color:goldenrod;"
+                               id="last" name="last"/>
+
+                    </div>
+
+                </div>
+
+                </div>
+
+
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                    </thead>  
+                    <tbody *ngFor="let cus of listOfCusts">
+                        <tr>
+                        <tr>
+                            <td style="color:blue">
+                                {{cus.FirstName}}
+                            </td>
+                            <td style="color:blue">
+                                {{cus.LastName}}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <button type="submit"
+                        style="color:darkgoldenrod;Background:lightgray"
+                        class="btn btn-success"> 
+                    Search Customers
+                </button>
+               
+                <a type="button"
+                   style="color:darkgoldenrod;Background:lightgray"
+                   class="btn btn-success"
+                   href="#" routerLink="/admin" routerLinkActive="active">
+                    Return to Admin
+                </a>
+
+                {{Message}}
+
+            </div>
+
+
+
+
+</form>

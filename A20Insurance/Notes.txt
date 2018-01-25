@@ -1,0 +1,28 @@
+﻿1. qualified history lookup by customerID bug fix
+2. added /td on proc1...proc3
+3. conectionstrings: was able to use dbcontext names as conection string names on release version.
+4. debug version defaulted
+
+5. when returning observable errors you need to use this.Message = ERROR.message; not just =Error;
+  fixing  register and review.  cust id = etest elicits check.
+
+6. pw reset screen has visible pw 
+
+6a. fixed error handling to using ERROR.messages instead of just ERROR parm type.
+
+7. test all functinos before publishing due to 6a.
+8. test reset pw using custom pw on admin side as well before publishing.
+
+9. revised reset to find customer, and then update customer. obsolete:reset customer.
+10. review screen signout button with menu update, hold-clear, return to splash...
+
+set 3
+
+11. touch admin screen autosignout - tested works
+12. add cust dup check - tested works.
+13. pw rules 6 special upper lower mix 1 2 special cases
+
+set 5
+14. verify resete logic
+15. hook test 13 pw rules reg,upd.  adm screen excluded can do what ever.
+16. show current pw on admin so can tell cust if case of forgetfulness.
